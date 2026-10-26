@@ -18,6 +18,7 @@ const identity = (p.identity ?? []).flatMap((item) =>
   typeof item === 'string' ? [image(item)] : (getSet(item)?.slides.map((sl) => sl.src) ?? []),
 );
 const carousels = (p.carousels ?? []).map((c) => getSet(c)).filter((c) => c !== undefined);
+const pages = p.site?.pages ?? [];
 ---
 
 <dialog class="case" id={id} data-tone="dark" aria-labelledby={`${id}-title`}>
@@ -85,13 +86,70 @@ const carousels = (p.carousels ?? []).map((c) => getSet(c)).filter((c) => c !== 
       p.site && (
         <section class="block" aria-label={s.site}>
           <h3 class="block-title">{s.site}</h3>
-          <a class="site-shot" href={p.site.url} target="_blank" rel="noopener">
-            <img src={image(p.site.image)} alt="" loading="lazy" decoding="async" />
-            <span class="sr-only">{s.visit}</span>
-          </a>
-          <a class="btn" href={p.site.url} target="_blank" rel="noopener">
-            {s.visit}
-          </a>
+
+          {p.site.video ? (
+            <div class="browser">
+              <div class="browser-bar" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
+              <video
+                class="site-video"
+                data-src={image(p.site.video)}
+                poster={p.site.poster ? image(p.site.poster) : undefined}
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label={s.video}
+              />
+            </div>
+          ) : (
+            p.site.image &&
+            (p.site.url ? (
+              <a class="site-shot" href={p.site.url} target="_blank" rel="noopener">
+                <img src={image(p.site.image)} alt="" loading="lazy" decoding="async" />
+                <span class="sr-only">{s.visit}</span>
+              </a>
+            ) : (
+              <div class="site-shot">
+                <img src={image(p.site.image)} alt="" loading="lazy" decoding="async" />
+              </div>
+            ))
+          )}
+
+          {pages.length > 0 && (
+            <div class="pages">
+              <div class="browser">
+                <div class="browser-bar">
+                  <span aria-hidden="true" />
+                  <span aria-hidden="true" />
+                  <span aria-hidden="true" />
+                  <p class="page-name" aria-live="polite">{pages[0].name[lang]}</p>
+                </div>
+                {pages.map((pg, i) => (
+                  <div class="page-scroll" data-page={i} hidden={i > 0} tabindex="0" aria-label={pg.name[lang]}>
+                    <img src={image(pg.full)} alt={`${p.client}: ${pg.name[lang]}`} loading="lazy" decoding="async" />
+                  </div>
+                ))}
+              </div>
+              <div class="page-picker" role="group" aria-label={s.pages}>
+                {pages.map((pg, i) => (
+                  <button type="button" class="page-pick" data-pick-page={i} data-name={pg.name[lang]} aria-pressed={String(i === 0)}>
+                    <img src={image(pg.screen)} alt="" loading="lazy" decoding="async" />
+                    <span>{pg.name[lang]}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {p.site.url && (
+            <a class="btn" href={p.site.url} target="_blank" rel="noopener">
+              {s.visit}
+            </a>
+          )}
         </section>
       )
     }
@@ -333,6 +391,109 @@ const carousels = (p.carousels ?? []).map((c) => getSet(c)).filter((c) => c !== 
     padding: 3px;
   }
 
+  /* Moldura de navegador para o vídeo e as páginas do site. */
+  .browser {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+  }
+
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    height: 38px;
+    padding: 0 16px;
+    background: color-mix(in srgb, var(--nevoa) 16%, var(--bg));
+  }
+
+  .browser-bar span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--nevoa) 45%, transparent);
+  }
+
+  .page-name {
+    margin-left: auto;
+    color: var(--fg-soft);
+    font-size: 0.88rem;
+  }
+
+  .site-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1280 / 800;
+    background: #fff;
+  }
+
+  .pages {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+  }
+
+  /* A página inteira rola dentro da moldura, como no navegador. */
+  .page-scroll {
+    height: min(70vh, 720px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: #fff;
+  }
+
+  .page-scroll[hidden] {
+    display: none;
+  }
+
+  .page-scroll img {
+    width: 100%;
+  }
+
+  .page-picker {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 4px;
+  }
+
+  .page-pick {
+    flex: none;
+    display: grid;
+    gap: 8px;
+    width: 168px;
+    padding: 6px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    opacity: 0.6;
+    transition:
+      opacity 0.25s,
+      border-color 0.25s;
+  }
+
+  .page-pick img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .page-pick span {
+    color: var(--fg-soft);
+    font-size: 0.9rem;
+  }
+
+  .page-pick:hover {
+    opacity: 0.85;
+  }
+
+  .page-pick[aria-pressed='true'] {
+    opacity: 1;
+    border-color: var(--agua);
+  }
+
   .site-shot {
     display: block;
     width: 100%;
@@ -398,6 +559,30 @@ const carousels = (p.carousels ?? []).map((c) => getSet(c)).filter((c) => c !== 
     dialog.addEventListener('click', (e) => {
       if (e.target === dialog) dialog.close();
     });
+
+    // Vídeo do site: só carrega quando o case abre, e pausa ao fechar.
+    const video = dialog.querySelector<HTMLVideoElement>('video[data-src]');
+    if (video) {
+      dialog.addEventListener('case:open', () => {
+        if (!video.src) video.src = video.dataset.src!;
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) video.play().catch(() => {});
+      });
+      dialog.addEventListener('close', () => video.pause());
+    }
+
+    // Páginas do site: a miniatura escolhida abre a página inteira na moldura.
+    const pageViews = [...dialog.querySelectorAll<HTMLElement>('.page-scroll')];
+    const pagePicks = [...dialog.querySelectorAll<HTMLButtonElement>('.page-pick')];
+    const pageName = dialog.querySelector<HTMLElement>('.page-name');
+    pagePicks.forEach((pick) =>
+      pick.addEventListener('click', () => {
+        const i = Number(pick.dataset.pickPage);
+        pageViews.forEach((v, j) => (v.hidden = j !== i));
+        pagePicks.forEach((pk, j) => pk.setAttribute('aria-pressed', String(j === i)));
+        pageViews[i].scrollTop = 0;
+        if (pageName) pageName.textContent = pick.dataset.name!;
+      }),
+    );
 
     const tracks = [...dialog.querySelectorAll<HTMLElement>('.track')];
     if (!tracks.length) return;

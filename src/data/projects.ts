@@ -26,7 +26,15 @@ export type Project = {
   cover: string;
   // Mostra slides empilhados atrás da capa (bom para quem tem só redes sociais).
   stack?: SourceRef;
-  site?: { url: string; image: string };
+  // Site: link (se estiver no ar), print principal, vídeo de navegação e páginas.
+  // Em `pages`, `screen` é o print da tela e `full` a página inteira (que dá para rolar no case).
+  site?: {
+    url?: string;
+    image?: string;
+    video?: string;
+    poster?: string;
+    pages?: { name: { pt: string; en: string }; screen: string; full: string }[];
+  };
   // Imagens soltas (caminho em public/) ou galerias convertidas do Canva.
   identity?: (string | SourceRef)[];
   carousels?: SourceRef[];
@@ -95,13 +103,25 @@ export const projects: Project[] = [
     id: 'papel-laranja',
     client: 'Papel Laranja',
     summary: {
-      pt: 'Identidade visual para papelaria personalizada e banner para o site.',
-      en: 'Brand identity for a custom stationery shop, plus a website banner.',
+      pt: 'Identidade visual e loja virtual para papelaria personalizada, com catálogo, personalização de produtos e carrinho.',
+      en: 'Brand identity and an online store for a custom stationery shop, with a catalog, product customization and a cart.',
     },
-    services: ['identidade'],
+    services: ['identidade', 'interfaces', 'dev'],
     year: '2025',
     size: 'normal',
     cover: '/portfolio/ID-Papel-Laranja.png',
+    site: {
+      video: '/portfolio/papel-laranja/navegacao.mp4',
+      poster: '/portfolio/papel-laranja/poster.webp',
+      pages: [
+        { name: { pt: 'Início', en: 'Home' }, screen: '/portfolio/papel-laranja/telas/01-home.webp', full: '/portfolio/papel-laranja/paginas/01-home.webp' },
+        { name: { pt: 'Catálogo', en: 'Catalog' }, screen: '/portfolio/papel-laranja/telas/02-catalogo.webp', full: '/portfolio/papel-laranja/paginas/02-catalogo.webp' },
+        { name: { pt: 'Produto', en: 'Product' }, screen: '/portfolio/papel-laranja/telas/03-produto.webp', full: '/portfolio/papel-laranja/paginas/03-produto.webp' },
+        { name: { pt: 'Personalize', en: 'Customize' }, screen: '/portfolio/papel-laranja/telas/04-personalize.webp', full: '/portfolio/papel-laranja/paginas/04-personalize.webp' },
+        { name: { pt: 'Carrinho', en: 'Cart' }, screen: '/portfolio/papel-laranja/telas/05-carrinho.webp', full: '/portfolio/papel-laranja/telas/05-carrinho.webp' },
+        { name: { pt: 'Cadastro', en: 'Sign-up' }, screen: '/portfolio/papel-laranja/telas/06-cadastro.webp', full: '/portfolio/papel-laranja/paginas/06-cadastro.webp' },
+      ],
+    },
     identity: ['/portfolio/ID-Papel-Laranja.png', { src: 'Banner site' }],
   },
   {
