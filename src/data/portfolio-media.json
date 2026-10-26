@@ -1,0 +1,846 @@
+{
+  "sets": {
+    "paes-de-sal-02": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/paes-de-sal-02/1.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-02/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-02/2.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-02/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-02/3.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-02/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-02/4.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-02/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-02/5.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-02/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-02/6.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-02/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-02/7.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-02/7-t.webp"
+        }
+      ]
+    },
+    "paes-de-sal-07": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/paes-de-sal-07/1.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-07/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-07/2.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-07/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-07/3.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-07/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-07/4.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-07/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-07/5.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-07/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-07/6.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-07/6-t.webp"
+        }
+      ]
+    },
+    "paes-de-sal-05": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/paes-de-sal-05/1.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-05/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-05/2.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-05/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-05/3.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-05/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-05/4.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-05/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-05/5.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-05/5-t.webp"
+        }
+      ]
+    },
+    "paes-de-sal-06": {
+      "w": 1080,
+      "h": 1440,
+      "slides": [
+        {
+          "src": "/portfolio/sets/paes-de-sal-06/1.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-06/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-06/2.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-06/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-06/3.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-06/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-06/4.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-06/4-t.webp"
+        }
+      ]
+    },
+    "paes-de-sal-11": {
+      "w": 1080,
+      "h": 1440,
+      "slides": [
+        {
+          "src": "/portfolio/sets/paes-de-sal-11/1.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-11/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-11/2.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-11/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-11/3.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-11/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-11/4.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-11/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/paes-de-sal-11/5.webp",
+          "thumb": "/portfolio/sets/paes-de-sal-11/5-t.webp"
+        }
+      ]
+    },
+    "alba-09": {
+      "w": 1080,
+      "h": 1440,
+      "slides": [
+        {
+          "src": "/portfolio/sets/alba-09/1.webp",
+          "thumb": "/portfolio/sets/alba-09/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-09/17.webp",
+          "thumb": "/portfolio/sets/alba-09/17-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-09/18.webp",
+          "thumb": "/portfolio/sets/alba-09/18-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-09/19.webp",
+          "thumb": "/portfolio/sets/alba-09/19-t.webp"
+        }
+      ]
+    },
+    "alba-08": {
+      "w": 1080,
+      "h": 1440,
+      "slides": [
+        {
+          "src": "/portfolio/sets/alba-08/1.webp",
+          "thumb": "/portfolio/sets/alba-08/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-08/2.webp",
+          "thumb": "/portfolio/sets/alba-08/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-08/3.webp",
+          "thumb": "/portfolio/sets/alba-08/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-08/4.webp",
+          "thumb": "/portfolio/sets/alba-08/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-08/5.webp",
+          "thumb": "/portfolio/sets/alba-08/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-08/6.webp",
+          "thumb": "/portfolio/sets/alba-08/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-08/7.webp",
+          "thumb": "/portfolio/sets/alba-08/7-t.webp"
+        }
+      ]
+    },
+    "alba-05": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/alba-05/1.webp",
+          "thumb": "/portfolio/sets/alba-05/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-05/2.webp",
+          "thumb": "/portfolio/sets/alba-05/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-05/3.webp",
+          "thumb": "/portfolio/sets/alba-05/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-05/4.webp",
+          "thumb": "/portfolio/sets/alba-05/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-05/5.webp",
+          "thumb": "/portfolio/sets/alba-05/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-05/6.webp",
+          "thumb": "/portfolio/sets/alba-05/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-05/7.webp",
+          "thumb": "/portfolio/sets/alba-05/7-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-05/8.webp",
+          "thumb": "/portfolio/sets/alba-05/8-t.webp"
+        }
+      ]
+    },
+    "alba-01": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/alba-01/1.webp",
+          "thumb": "/portfolio/sets/alba-01/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-01/2.webp",
+          "thumb": "/portfolio/sets/alba-01/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-01/3.webp",
+          "thumb": "/portfolio/sets/alba-01/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-01/4.webp",
+          "thumb": "/portfolio/sets/alba-01/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-01/5.webp",
+          "thumb": "/portfolio/sets/alba-01/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-01/6.webp",
+          "thumb": "/portfolio/sets/alba-01/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-01/7.webp",
+          "thumb": "/portfolio/sets/alba-01/7-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-01/8.webp",
+          "thumb": "/portfolio/sets/alba-01/8-t.webp"
+        }
+      ]
+    },
+    "alba-06": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/alba-06/1.webp",
+          "thumb": "/portfolio/sets/alba-06/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-06/2.webp",
+          "thumb": "/portfolio/sets/alba-06/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-06/3.webp",
+          "thumb": "/portfolio/sets/alba-06/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-06/4.webp",
+          "thumb": "/portfolio/sets/alba-06/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-06/5.webp",
+          "thumb": "/portfolio/sets/alba-06/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-06/6.webp",
+          "thumb": "/portfolio/sets/alba-06/6-t.webp"
+        }
+      ]
+    },
+    "alba-02": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/alba-02/1.webp",
+          "thumb": "/portfolio/sets/alba-02/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-02/2.webp",
+          "thumb": "/portfolio/sets/alba-02/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-02/3.webp",
+          "thumb": "/portfolio/sets/alba-02/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-02/4.webp",
+          "thumb": "/portfolio/sets/alba-02/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-02/5.webp",
+          "thumb": "/portfolio/sets/alba-02/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/alba-02/6.webp",
+          "thumb": "/portfolio/sets/alba-02/6-t.webp"
+        }
+      ]
+    },
+    "carol-06": {
+      "w": 1080,
+      "h": 1440,
+      "slides": [
+        {
+          "src": "/portfolio/sets/carol-06/1.webp",
+          "thumb": "/portfolio/sets/carol-06/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-06/2.webp",
+          "thumb": "/portfolio/sets/carol-06/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-06/3.webp",
+          "thumb": "/portfolio/sets/carol-06/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-06/4.webp",
+          "thumb": "/portfolio/sets/carol-06/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-06/5.webp",
+          "thumb": "/portfolio/sets/carol-06/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-06/6.webp",
+          "thumb": "/portfolio/sets/carol-06/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-06/7.webp",
+          "thumb": "/portfolio/sets/carol-06/7-t.webp"
+        }
+      ]
+    },
+    "carol-09": {
+      "w": 1080,
+      "h": 1440,
+      "slides": [
+        {
+          "src": "/portfolio/sets/carol-09/1.webp",
+          "thumb": "/portfolio/sets/carol-09/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-09/2.webp",
+          "thumb": "/portfolio/sets/carol-09/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-09/3.webp",
+          "thumb": "/portfolio/sets/carol-09/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-09/4.webp",
+          "thumb": "/portfolio/sets/carol-09/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-09/5.webp",
+          "thumb": "/portfolio/sets/carol-09/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-09/6.webp",
+          "thumb": "/portfolio/sets/carol-09/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-09/7.webp",
+          "thumb": "/portfolio/sets/carol-09/7-t.webp"
+        }
+      ]
+    },
+    "carol-12": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+                {
+          "src": "/portfolio/sets/carol-12/6.webp",
+          "thumb": "/portfolio/sets/carol-12/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-12/1.webp",
+          "thumb": "/portfolio/sets/carol-12/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-12/2.webp",
+          "thumb": "/portfolio/sets/carol-12/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-12/3.webp",
+          "thumb": "/portfolio/sets/carol-12/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-12/4.webp",
+          "thumb": "/portfolio/sets/carol-12/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-12/5.webp",
+          "thumb": "/portfolio/sets/carol-12/5-t.webp"
+        }
+      ]
+    },
+    "carol-04": {
+      "w": 1080,
+      "h": 1440,
+      "slides": [
+        {
+          "src": "/portfolio/sets/carol-04/1.webp",
+          "thumb": "/portfolio/sets/carol-04/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-04/2.webp",
+          "thumb": "/portfolio/sets/carol-04/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-04/3.webp",
+          "thumb": "/portfolio/sets/carol-04/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-04/4.webp",
+          "thumb": "/portfolio/sets/carol-04/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-04/5.webp",
+          "thumb": "/portfolio/sets/carol-04/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-04/6.webp",
+          "thumb": "/portfolio/sets/carol-04/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-04/7.webp",
+          "thumb": "/portfolio/sets/carol-04/7-t.webp"
+        }
+      ]
+    },
+    "carol-05": {
+      "w": 1080,
+      "h": 1440,
+      "slides": [
+        {
+          "src": "/portfolio/sets/carol-05/1.webp",
+          "thumb": "/portfolio/sets/carol-05/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-05/2.webp",
+          "thumb": "/portfolio/sets/carol-05/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-05/3.webp",
+          "thumb": "/portfolio/sets/carol-05/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-05/4.webp",
+          "thumb": "/portfolio/sets/carol-05/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-05/5.webp",
+          "thumb": "/portfolio/sets/carol-05/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-05/6.webp",
+          "thumb": "/portfolio/sets/carol-05/6-t.webp"
+        }
+      ]
+    },
+    "carol-14": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/carol-14/1.webp",
+          "thumb": "/portfolio/sets/carol-14/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-14/2.webp",
+          "thumb": "/portfolio/sets/carol-14/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-14/3.webp",
+          "thumb": "/portfolio/sets/carol-14/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-14/4.webp",
+          "thumb": "/portfolio/sets/carol-14/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-14/5.webp",
+          "thumb": "/portfolio/sets/carol-14/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-14/6.webp",
+          "thumb": "/portfolio/sets/carol-14/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/carol-14/7.webp",
+          "thumb": "/portfolio/sets/carol-14/7-t.webp"
+        }
+      ]
+    },
+    "micha-15": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/micha-15/1.webp",
+          "thumb": "/portfolio/sets/micha-15/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-15/2.webp",
+          "thumb": "/portfolio/sets/micha-15/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-15/3.webp",
+          "thumb": "/portfolio/sets/micha-15/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-15/4.webp",
+          "thumb": "/portfolio/sets/micha-15/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-15/5.webp",
+          "thumb": "/portfolio/sets/micha-15/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-15/6.webp",
+          "thumb": "/portfolio/sets/micha-15/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-15/7.webp",
+          "thumb": "/portfolio/sets/micha-15/7-t.webp"
+        }
+      ]
+    },
+    "micha-11": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/micha-11/1.webp",
+          "thumb": "/portfolio/sets/micha-11/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-11/2.webp",
+          "thumb": "/portfolio/sets/micha-11/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-11/3.webp",
+          "thumb": "/portfolio/sets/micha-11/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-11/4.webp",
+          "thumb": "/portfolio/sets/micha-11/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-11/5.webp",
+          "thumb": "/portfolio/sets/micha-11/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-11/6.webp",
+          "thumb": "/portfolio/sets/micha-11/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-11/7.webp",
+          "thumb": "/portfolio/sets/micha-11/7-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-11/8.webp",
+          "thumb": "/portfolio/sets/micha-11/8-t.webp"
+        }
+      ]
+    },
+    "micha-12": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/micha-12/1.webp",
+          "thumb": "/portfolio/sets/micha-12/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-12/2.webp",
+          "thumb": "/portfolio/sets/micha-12/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-12/3.webp",
+          "thumb": "/portfolio/sets/micha-12/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-12/4.webp",
+          "thumb": "/portfolio/sets/micha-12/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-12/5.webp",
+          "thumb": "/portfolio/sets/micha-12/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-12/6.webp",
+          "thumb": "/portfolio/sets/micha-12/6-t.webp"
+        }
+      ]
+    },
+    "micha-02": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/micha-02/1.webp",
+          "thumb": "/portfolio/sets/micha-02/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-02/2.webp",
+          "thumb": "/portfolio/sets/micha-02/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-02/3.webp",
+          "thumb": "/portfolio/sets/micha-02/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-02/4.webp",
+          "thumb": "/portfolio/sets/micha-02/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-02/5.webp",
+          "thumb": "/portfolio/sets/micha-02/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-02/6.webp",
+          "thumb": "/portfolio/sets/micha-02/6-t.webp"
+        }
+      ]
+    },
+    "micha-04": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/micha-04/1.webp",
+          "thumb": "/portfolio/sets/micha-04/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-04/2.webp",
+          "thumb": "/portfolio/sets/micha-04/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-04/3.webp",
+          "thumb": "/portfolio/sets/micha-04/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-04/4.webp",
+          "thumb": "/portfolio/sets/micha-04/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-04/5.webp",
+          "thumb": "/portfolio/sets/micha-04/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-04/6.webp",
+          "thumb": "/portfolio/sets/micha-04/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-04/7.webp",
+          "thumb": "/portfolio/sets/micha-04/7-t.webp"
+        }
+      ]
+    },
+    "micha-16": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/micha-16/1.webp",
+          "thumb": "/portfolio/sets/micha-16/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-16/2.webp",
+          "thumb": "/portfolio/sets/micha-16/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-16/3.webp",
+          "thumb": "/portfolio/sets/micha-16/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-16/4.webp",
+          "thumb": "/portfolio/sets/micha-16/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-16/5.webp",
+          "thumb": "/portfolio/sets/micha-16/5-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-16/6.webp",
+          "thumb": "/portfolio/sets/micha-16/6-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-16/7.webp",
+          "thumb": "/portfolio/sets/micha-16/7-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/micha-16/8.webp",
+          "thumb": "/portfolio/sets/micha-16/8-t.webp"
+        }
+      ]
+    },
+    "banner-site": {
+      "w": 786,
+      "h": 255,
+      "slides": [
+        {
+          "src": "/portfolio/sets/banner-site/1.webp",
+          "thumb": "/portfolio/sets/banner-site/1-t.webp"
+        }
+      ]
+    },
+    "angel-01": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/angel-01/1.webp",
+          "thumb": "/portfolio/sets/angel-01/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-01/2.webp",
+          "thumb": "/portfolio/sets/angel-01/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-01/3.webp",
+          "thumb": "/portfolio/sets/angel-01/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-01/4.webp",
+          "thumb": "/portfolio/sets/angel-01/4-t.webp"
+        }
+      ]
+    },
+    "angel-02": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/angel-02/1.webp",
+          "thumb": "/portfolio/sets/angel-02/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-02/2.webp",
+          "thumb": "/portfolio/sets/angel-02/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-02/3.webp",
+          "thumb": "/portfolio/sets/angel-02/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-02/4.webp",
+          "thumb": "/portfolio/sets/angel-02/4-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-02/5.webp",
+          "thumb": "/portfolio/sets/angel-02/5-t.webp"
+        }
+      ]
+    },
+    "angel-03": {
+      "w": 1080,
+      "h": 1350,
+      "slides": [
+        {
+          "src": "/portfolio/sets/angel-03/1.webp",
+          "thumb": "/portfolio/sets/angel-03/1-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-03/2.webp",
+          "thumb": "/portfolio/sets/angel-03/2-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-03/3.webp",
+          "thumb": "/portfolio/sets/angel-03/3-t.webp"
+        },
+        {
+          "src": "/portfolio/sets/angel-03/4.webp",
+          "thumb": "/portfolio/sets/angel-03/4-t.webp"
+        }
+      ]
+    },
+    "angel-06": {
+      "w": 1080,
+      "h": 1080,
+      "slides": [
+        {
+          "src": "/portfolio/sets/angel-06/1.webp",
+          "thumb": "/portfolio/sets/angel-06/1-t.webp"
+        }
+      ]
+    }
+  },
+  "images": {
+    "/portfolio/paes-de-sal.png": {
+      "src": "/portfolio/paes-de-sal.webp",
+      "w": 1600,
+      "h": 765
+    },
+    "/portfolio/dracarolinegastro.png": {
+      "src": "/portfolio/dracarolinegastro.webp",
+      "w": 1600,
+      "h": 763
+    },
+    "/portfolio/ID-Michaela.png": {
+      "src": "/portfolio/ID-Michaela.webp",
+      "w": 1600,
+      "h": 2700
+    },
+    "/portfolio/ID-Papel-Laranja.png": {
+      "src": "/portfolio/ID-Papel-Laranja.webp",
+      "w": 1600,
+      "h": 2700
+    }
+  }
+}

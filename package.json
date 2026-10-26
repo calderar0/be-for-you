@@ -1,0 +1,26 @@
+{
+  "name": "be-for-you",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "brand": "node scripts/brand.mjs",
+    "portfolio": "node scripts/portfolio.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "@fontsource-variable/jost": "5.3.0",
+    "astro": "5.18.2"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true,
+    "esbuild@0.25.12": true,
+    "sharp@0.34.5": true
+  },
+  "devDependencies": {
+    "fflate": "^0.8.2"
+  }
+}

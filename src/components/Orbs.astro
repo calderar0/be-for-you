@@ -1,0 +1,85 @@
+---
+// Fundo abstrato: esferas em degradê nas cores da marca, cortadas pelas bordas da seção.
+// Cada conjunto posiciona as esferas para não disputar atenção com o conteúdo.
+
+type Orb = { x: string; y: string; size: string; a: string; b: string; angle?: number; blur?: number; opacity?: number };
+
+const sets: Record<string, Orb[]> = {
+  hero: [
+    { x: '86%', y: '-8%', size: 'clamp(240px, 30vw, 460px)', a: 'var(--nevoa)', b: 'var(--agua)', angle: 200, opacity: 0.55 },
+    { x: '-7%', y: '62%', size: 'clamp(200px, 22vw, 360px)', a: 'var(--agua)', b: 'var(--nevoa)', angle: 140, opacity: 0.45 },
+    { x: '58%', y: '96%', size: 'clamp(90px, 9vw, 150px)', a: 'var(--nevoa)', b: 'var(--ameixa)', angle: 160, opacity: 0.35, blur: 2 },
+  ],
+  services: [
+    { x: '97%', y: '22%', size: 'clamp(200px, 24vw, 380px)', a: 'var(--agua)', b: 'var(--nevoa)', angle: 220, opacity: 0.45 },
+    { x: '-4%', y: '88%', size: 'clamp(160px, 18vw, 300px)', a: 'var(--nevoa)', b: 'var(--ameixa)', angle: 120, opacity: 0.3 },
+  ],
+  work: [
+    { x: '0%', y: '6%', size: 'clamp(320px, 40vw, 640px)', a: 'var(--ameixa)', b: 'transparent', angle: 160, opacity: 0.4, blur: 70 },
+    { x: '100%', y: '70%', size: 'clamp(320px, 38vw, 600px)', a: 'var(--mare)', b: 'transparent', angle: 300, opacity: 0.35, blur: 80 },
+  ],
+  process: [
+    { x: '-6%', y: '14%', size: 'clamp(140px, 14vw, 230px)', a: 'var(--nevoa)', b: 'var(--agua)', angle: 150, opacity: 0.45 },
+    { x: '95%', y: '96%', size: 'clamp(220px, 26vw, 420px)', a: 'var(--agua)', b: 'var(--ameixa)', angle: 230, opacity: 0.28 },
+  ],
+  contact: [
+    { x: '12%', y: '100%', size: 'clamp(320px, 40vw, 620px)', a: 'var(--agua)', b: 'transparent', angle: 20, opacity: 0.28, blur: 80 },
+    { x: '92%', y: '4%', size: 'clamp(240px, 30vw, 460px)', a: 'var(--ameixa)', b: 'transparent', angle: 200, opacity: 0.35, blur: 70 },
+  ],
+};
+
+interface Props {
+  set: keyof typeof sets;
+}
+
+const { set } = Astro.props;
+---
+
+<div class="orbs" aria-hidden="true">
+  {
+    sets[set].map((o, i) => (
+      <span
+        class="orb"
+        style={`--x:${o.x};--y:${o.y};--s:${o.size};--a:${o.a};--b:${o.b};--ang:${o.angle ?? 180}deg;--blur:${o.blur ?? 6}px;--op:${o.opacity ?? 0.5};--d:${i * -7}s`}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .orbs {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .orb {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--s);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: linear-gradient(var(--ang), var(--a), var(--b));
+    filter: blur(var(--blur));
+    opacity: var(--op);
+    translate: -50% -50%;
+    animation: orb-float 22s ease-in-out infinite alternate;
+    animation-delay: var(--d);
+  }
+
+  /* Deriva lenta, quase imperceptível. */
+  @keyframes orb-float {
+    to {
+      transform: translate(18px, -24px) scale(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orb {
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,323 @@
+---
+import Logo from './Logo.astro';
+import Wordmark from './Wordmark.astro';
+import { t, paths, type Lang } from '../i18n/strings';
+import { whatsappLink } from '../data/site';
+
+interface Props {
+  lang: Lang;
+  alternate: string;
+}
+
+const { lang, alternate } = Astro.props;
+const s = t(lang);
+const home = paths[lang].home;
+const links = [
+  { href: `${home}#servicos`, label: s.nav.services },
+  { href: `${home}#portfolio`, label: s.nav.work },
+  { href: `${home}#processo`, label: s.nav.process },
+  { href: `${home}#contato`, label: s.nav.contact },
+];
+const wa = whatsappLink(s.hero.callMessage);
+---
+
+<header class="header" data-tone="light">
+  <div class="header-inner wrap">
+    <a class="brand" href={home} aria-label="Be For You">
+      <Logo class="brand-mark" stroke={8} />
+      <Wordmark class="brand-word" stroke={1.4} />
+    </a>
+
+    <nav class="nav" aria-label={s.nav.menu}>
+      <ul>
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <a class="lang" href={alternate} hreflang={lang === 'pt' ? 'en' : 'pt-BR'} lang={lang === 'pt' ? 'en' : 'pt-BR'}>
+        <span aria-hidden="true">{s.nav.otherLangShort}</span>
+        <span class="sr-only">{s.nav.otherLang}</span>
+      </a>
+      <a class="btn btn--small wa" href={wa} target="_blank" rel="noopener">{s.nav.whatsapp}</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="menu-icon" aria-hidden="true"></span>
+        <span class="sr-only menu-label" data-open={s.nav.menu} data-close={s.nav.close}>{s.nav.menu}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu" id="menu" data-tone="dark" hidden>
+    <nav class="wrap" aria-label={s.nav.menu}>
+      <ul>
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+      <div class="menu-foot">
+        <a class="btn" href={wa} target="_blank" rel="noopener">{s.nav.whatsapp}</a>
+        <a class="link" href={alternate} lang={lang === 'pt' ? 'en' : 'pt-BR'}>{s.nav.otherLang}</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    color: var(--fg);
+    transition: color 0.4s var(--ease);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease), background-color 0.4s var(--ease);
+  }
+
+  .header.is-scrolled::before {
+    opacity: 1;
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 76px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: inherit;
+    margin-right: auto;
+  }
+
+  .brand :global(.brand-mark) {
+    height: 30px;
+    width: auto;
+  }
+
+  .brand :global(.brand-word) {
+    height: 13px;
+    width: auto;
+  }
+
+  .nav ul {
+    display: flex;
+    gap: clamp(20px, 2.6vw, 40px);
+  }
+
+  .nav a,
+  .lang {
+    position: relative;
+    text-decoration: none;
+    font-size: 0.97rem;
+    letter-spacing: 0.01em;
+    padding-block: 6px;
+  }
+
+  .nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s var(--ease);
+  }
+
+  .nav a:hover::after {
+    transform: scaleX(1);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .lang {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    transition: border-color 0.25s;
+  }
+
+  .lang:hover {
+    border-color: currentColor;
+  }
+
+  .btn--small {
+    --h: 40px;
+    padding: 0 20px;
+    font-size: 0.95rem;
+  }
+
+  .menu-btn {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+  }
+
+  .menu-icon,
+  .menu-icon::before {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 0.35s var(--ease);
+  }
+
+  .menu-icon {
+    top: 18px;
+  }
+
+  .menu-icon::before {
+    content: '';
+    left: 0;
+    right: 0;
+    top: 7px;
+  }
+
+  .menu-btn[aria-expanded='true'] .menu-icon {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .menu-btn[aria-expanded='true'] .menu-icon::before {
+    transform: translateY(-7px) rotate(-90deg);
+  }
+
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    padding-top: 110px;
+    background: var(--bg);
+    color: var(--fg);
+    overflow-y: auto;
+  }
+
+  .menu ul {
+    display: grid;
+    gap: 6px;
+  }
+
+  .menu ul a {
+    display: block;
+    padding-block: 8px;
+    font-size: var(--step-3);
+    font-weight: 300;
+    line-height: 1.1;
+    text-decoration: none;
+  }
+
+  .menu-foot {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: 900px) {
+    .nav,
+    .wa,
+    .lang {
+      display: none;
+    }
+
+    .menu-btn {
+      display: block;
+    }
+
+    .header.menu-open {
+      color: #f3f0fa;
+    }
+
+    .header.menu-open::before {
+      opacity: 0;
+    }
+
+    .header-inner {
+      height: 68px;
+    }
+
+    .brand :global(.brand-mark) {
+      height: 26px;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.header')!;
+  const btn = header.querySelector<HTMLButtonElement>('.menu-btn')!;
+  const menu = header.querySelector<HTMLElement>('#menu')!;
+  const label = btn.querySelector<HTMLElement>('.menu-label')!;
+  const sections = [...document.querySelectorAll<HTMLElement>('[data-tone]:not(.header):not(.menu)')];
+
+  // O cabeçalho adota o tom (claro ou escuro) da seção que está por baixo dele.
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    header.classList.toggle('is-scrolled', window.scrollY > 24);
+    const probe = 38;
+    const under = sections.find((s) => {
+      const r = s.getBoundingClientRect();
+      return r.top <= probe && r.bottom > probe;
+    });
+    header.dataset.tone = under?.dataset.tone ?? 'light';
+  };
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
+  update();
+
+  const setOpen = (open: boolean) => {
+    btn.setAttribute('aria-expanded', String(open));
+    menu.hidden = !open;
+    header.classList.toggle('menu-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    label.textContent = open ? label.dataset.close! : label.dataset.open!;
+  };
+  btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+  menu.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.hidden) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+</script>

@@ -1,0 +1,34 @@
+---
+import Prose from '../components/Prose.astro';
+import { t, paths } from '../i18n/strings';
+import { site } from '../data/site';
+
+const s = t('pt');
+---
+
+<Prose lang="pt" alternate={paths.en.privacy} title={s.privacy.title} lead={s.privacy.updated} back={{ href: paths.pt.home, label: s.privacy.back }}>
+  <p>
+    Esta política explica como a Be For You trata as informações de quem visita este site, de acordo com a Lei Geral de
+    Proteção de Dados (Lei nº 13.709/2018).
+  </p>
+
+  <h2>Formulário de contato</h2>
+  <p>
+    O formulário deste site não armazena dados. Ao enviar, a sua mensagem é aberta no WhatsApp ou no seu aplicativo de
+    e-mail, e você decide se quer enviá-la. As informações que recebermos por esses canais são usadas apenas para
+    responder ao seu contato e preparar uma proposta.
+  </p>
+
+  <h2>Cookies e análise de uso</h2>
+  <p>
+    Usamos ferramentas de análise (como Google Analytics e Meta Pixel) somente se você aceitar os cookies no aviso
+    exibido no site. Elas nos ajudam a entender quais páginas são visitadas e a melhorar o conteúdo. Você pode mudar a
+    sua escolha a qualquer momento em “Preferências de cookies”, no rodapé.
+  </p>
+
+  <h2>Seus direitos</h2>
+  <p>
+    Você pode solicitar acesso, correção ou exclusão dos seus dados, além de informações sobre o tratamento, pelo
+    e-mail <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+</Prose>

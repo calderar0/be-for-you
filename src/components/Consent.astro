@@ -1,0 +1,145 @@
+---
+// Aviso de cookies (LGPD). Os scripts de análise só carregam depois do aceite.
+import { t, paths, type Lang } from '../i18n/strings';
+import { site } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = t(lang).consent;
+const { ga4, metaPixel } = site.analytics;
+const enabled = Boolean(ga4 || metaPixel);
+---
+
+{
+  enabled && (
+    <div class="consent" data-tone="dark" role="region" aria-label="Cookies" data-ga4={ga4} data-pixel={metaPixel} hidden>
+      <p>
+        {s.text}{' '}
+        <a class="link" href={paths[lang].privacy}>
+          {s.more}
+        </a>
+      </p>
+      <div class="consent-actions">
+        <button type="button" class="btn btn--small" data-choice="granted">
+          {s.accept}
+        </button>
+        <button type="button" class="btn btn--small btn--ghost" data-choice="denied">
+          {s.reject}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .consent {
+    position: fixed;
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: 16px;
+    z-index: 60;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    max-width: 760px;
+    margin-inline: auto;
+    padding: 18px 22px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .consent p {
+    flex: 1 1 320px;
+  }
+
+  .consent-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn--small {
+    --h: 42px;
+    padding: 0 20px;
+    font-size: 0.95rem;
+  }
+</style>
+
+<script>
+  const box = document.querySelector<HTMLElement>('.consent');
+  const KEY = 'bfy-consent';
+
+  const read = () => {
+    try {
+      return localStorage.getItem(KEY);
+    } catch {
+      return null;
+    }
+  };
+
+  const load = (ga4?: string, pixel?: string) => {
+    if (ga4) {
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = `https://www.googletagmanager.com/gtag/js?id=${ga4}`;
+      document.head.append(s);
+      const w = window as any;
+      w.dataLayer = w.dataLayer || [];
+      w.gtag = function () {
+        w.dataLayer.push(arguments);
+      };
+      w.gtag('js', new Date());
+      w.gtag('config', ga4, { anonymize_ip: true });
+    }
+    if (pixel) {
+      const w = window as any;
+      if (w.fbq) return;
+      const n: any = (w.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      });
+      n.push = n;
+      n.loaded = true;
+      n.version = '2.0';
+      n.queue = [];
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.append(s);
+      w.fbq('init', pixel);
+      w.fbq('track', 'PageView');
+    }
+  };
+
+  if (box) {
+    const { ga4, pixel } = box.dataset;
+    const choice = read();
+    if (choice === 'granted') load(ga4, pixel);
+    else if (!choice) box.hidden = false;
+
+    box.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-choice]');
+      if (!btn) return;
+      const value = btn.dataset.choice!;
+      try {
+        localStorage.setItem(KEY, value);
+      } catch {}
+      box.hidden = true;
+      if (value === 'granted') load(ga4, pixel);
+    });
+
+    document.querySelectorAll('[data-consent-open]').forEach((b) =>
+      b.addEventListener('click', () => {
+        box.hidden = false;
+        box.querySelector<HTMLButtonElement>('[data-choice]')?.focus();
+      }),
+    );
+  }
+</script>

@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import Manifesto from './Manifesto.astro';
+import Services from './Services.astro';
+import Portfolio from './Portfolio.astro';
+import Clients from './Clients.astro';
+import Process from './Process.astro';
+import Contact from './Contact.astro';
+import { paths, type Lang } from '../i18n/strings';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const other = lang === 'pt' ? 'en' : 'pt';
+---
+
+<Base lang={lang} alternate={paths[other].home}>
+  <Hero lang={lang} />
+  <Manifesto lang={lang} />
+  <Services lang={lang} />
+  <Portfolio lang={lang} />
+  <Clients lang={lang} />
+  <Process lang={lang} />
+  <Contact lang={lang} />
+</Base>

@@ -1,0 +1,44 @@
+---
+// Símbolo da Be For You: o B desenhado como um ∞ em pé.
+// variant 'mono' usa a cor do texto (acompanha o tom claro/escuro); 'gradient' vai da água ao violeta.
+// A haste e o ∞ são traços separados: na animação, a haste se apaga e o ∞ gira e deita
+// (veja as regras .logo em global.css).
+import { framePath, loopPath, markBox, markCenter, markViewBox } from '../lib/mark';
+
+interface Props {
+  stroke?: number;
+  variant?: 'mono' | 'gradient';
+  class?: string;
+  title?: string;
+}
+
+const { stroke = 7, variant = 'mono', class: className, title = 'Be For You' } = Astro.props;
+const id = `mark-${Math.random().toString(36).slice(2, 8)}`;
+const paint = variant === 'gradient' ? `url(#${id})` : 'currentColor';
+---
+
+<svg
+  class:list={['logo', className]}
+  viewBox={markViewBox(stroke)}
+  fill="none"
+  stroke={paint}
+  stroke-width={stroke}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  role="img"
+  aria-label={title}
+  style={`--mark-origin: ${markCenter.x}px ${markCenter.y}px`}
+>
+  {
+    variant === 'gradient' && (
+      <defs>
+        <linearGradient id={id} gradientUnits="userSpaceOnUse" x1="0" y1={markBox.y} x2="0" y2={markBox.y + markBox.h}>
+          <stop offset="0" stop-color="var(--agua)" />
+          <stop offset="1" stop-color="var(--ameixa-claro, var(--ameixa))" />
+        </linearGradient>
+      </defs>
+    )
+  }
+  <path class="mark-frame" d={framePath} pathLength="1" />
+  <path class="mark-loop" d={loopPath} />
+</svg>

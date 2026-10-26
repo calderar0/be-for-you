@@ -1,0 +1,147 @@
+---
+import Logo from './Logo.astro';
+import { t, type Lang } from '../i18n/strings';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = t(lang);
+---
+
+<section class="manifesto tone" data-tone="dark" aria-labelledby="manifesto-title">
+  <div class="wrap">
+    <h2 class="m-title" id="manifesto-title">
+      <span class="sr-only">{s.manifesto.a} {s.manifesto.b}</span>
+      <span class="m-line" aria-hidden="true">Be<span class="m-gap"> </span>for<span class="m-e">e</span> you.</span>
+    </h2>
+
+    <div class="m-body">
+      <Logo class="m-mark" stroke={4} variant="gradient" />
+      <div class="m-text">
+        {s.manifesto.body.map((p) => <p>{p}</p>)}
+        <p class="m-sign">{s.manifesto.sign}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .manifesto {
+    padding-block: var(--section);
+    overflow: clip;
+  }
+
+  .m-title {
+    font-size: clamp(3.5rem, 1.5rem + 10vw, 12rem);
+    font-weight: 200;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    white-space: nowrap;
+  }
+
+  .m-gap {
+    display: inline-block;
+    width: 0.24em;
+    transition: width 1.4s var(--ease);
+  }
+
+  .m-e {
+    display: inline-block;
+    max-width: 0;
+    overflow: hidden;
+    vertical-align: bottom;
+    opacity: 0;
+    transition:
+      max-width 1.4s var(--ease),
+      opacity 0.9s var(--ease) 0.3s;
+  }
+
+  .manifesto:global(.is-in) .m-gap {
+    width: 0;
+  }
+
+  .manifesto:global(.is-in) .m-e {
+    max-width: 0.6em;
+    opacity: 1;
+  }
+
+  .m-body {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(32px, 6vw, 96px);
+    margin-top: clamp(56px, 8vw, 120px);
+  }
+
+  /* Antes de a seção aparecer, o símbolo é um ∞ deitado; vira B junto com "Before you." */
+  :global(.js) .m-body :global(.logo .mark-frame) {
+    stroke-dashoffset: -1;
+  }
+
+  :global(.js) .m-body :global(.logo .mark-loop) {
+    transform: rotate(-90deg) scale(0.82);
+  }
+
+  :global(.js) .manifesto:global(.is-in) .m-body :global(.logo .mark-loop) {
+    transform: none;
+    transition-duration: 1.4s;
+    transition-delay: 0.3s;
+  }
+
+  :global(.js) .manifesto:global(.is-in) .m-body :global(.logo .mark-frame) {
+    stroke-dashoffset: 0;
+    transition-duration: 0.9s;
+    transition-delay: 1.3s;
+  }
+
+  .m-body :global(.m-mark) {
+    width: min(100%, 150px);
+    height: auto;
+    color: var(--agua);
+  }
+
+  .m-text {
+    display: grid;
+    gap: 1.25em;
+    max-width: 36rem;
+    font-size: var(--step-1);
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--fg-soft);
+  }
+
+  .m-text .m-sign {
+    color: var(--fg);
+    font-size: var(--step-2);
+    font-weight: 350;
+    margin-top: 0.5em;
+  }
+
+  @media (max-width: 760px) {
+    .m-body {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .m-body :global(.m-mark) {
+      width: 96px;
+    }
+  }
+</style>
+
+<script>
+  // "Be for you." vira "Before you." quando a seção entra na tela.
+  const el = document.querySelector('.manifesto');
+  if (el) {
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setTimeout(() => el.classList.add('is-in'), 500);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(el.querySelector('.m-title')!);
+  }
+</script>

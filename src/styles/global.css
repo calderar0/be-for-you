@@ -1,0 +1,314 @@
+@import '@fontsource-variable/jost';
+
+:root {
+  /* Paleta Be For You */
+  --porcelana: #faf9fd;
+  --noite: #15042a;
+  --violeta: #320a59;
+  --ameixa: #7b5da6;
+  --nevoa: #bebad9;
+  --agua: #88bfbf;
+  --mare: #118c80;
+
+  /* Tom claro (padrão) */
+  --bg: var(--porcelana);
+  --fg: var(--violeta);
+  --fg-soft: var(--ameixa);
+  --line: color-mix(in srgb, var(--nevoa) 70%, transparent);
+  --accent: var(--mare);
+  --btn-bg: var(--violeta);
+  --btn-fg: var(--porcelana);
+  --focus: var(--mare);
+
+  /* Tipografia: escala 4:3 */
+  --font: 'Jost Variable', 'Jost', ui-sans-serif, system-ui, sans-serif;
+  --step--1: 0.8125rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.375rem;
+  --step-2: 1.8125rem;
+  --step-3: clamp(2.125rem, 1.6rem + 2.2vw, 3.25rem);
+  --step-4: clamp(2.75rem, 1.9rem + 3.8vw, 5.25rem);
+  --step-5: clamp(3.25rem, 2rem + 6vw, 8rem);
+
+  --gutter: clamp(16px, 4vw, 56px);
+  --max: 1360px;
+  --section: clamp(96px, 14vw, 200px);
+  --radius: 28px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+/* Permite um bloco claro dentro de uma seção escura (ex.: cards do portfólio). */
+[data-tone='light'] {
+  --bg: var(--porcelana);
+  --fg: var(--violeta);
+  --fg-soft: var(--ameixa);
+  --line: color-mix(in srgb, var(--nevoa) 70%, transparent);
+  --accent: var(--mare);
+  --btn-bg: var(--violeta);
+  --btn-fg: var(--porcelana);
+  --focus: var(--mare);
+  color-scheme: light;
+}
+
+[data-tone='dark'] {
+  --bg: var(--noite);
+  --fg: #f3f0fa;
+  --fg-soft: var(--nevoa);
+  --line: color-mix(in srgb, var(--nevoa) 22%, transparent);
+  --accent: var(--agua);
+  --btn-bg: var(--agua);
+  --btn-fg: var(--noite);
+  --focus: var(--agua);
+  --ameixa-claro: #a58fd0;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  background: var(--porcelana);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: var(--step-0);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --step-0: 1.125rem;
+  }
+}
+
+img,
+svg,
+canvas,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--agua);
+  color: var(--noite);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--violeta);
+  color: var(--porcelana);
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* Estrutura */
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.tone {
+  position: relative;
+  isolation: isolate;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.section-head {
+  display: grid;
+  gap: 20px;
+  max-width: 46rem;
+  margin-bottom: clamp(48px, 7vw, 96px);
+}
+
+.section-title {
+  font-size: var(--step-4);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.section-intro {
+  max-width: 38rem;
+  color: var(--fg-soft);
+  font-size: var(--step-1);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* Botões */
+.btn {
+  --h: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--h);
+  padding: 0 28px;
+  border: 1px solid var(--btn-bg);
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: var(--step-0);
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--fg);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--fg);
+}
+
+.btn--ghost:hover {
+  border-color: var(--fg);
+}
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--line);
+  transition: text-decoration-color 0.2s;
+}
+
+.link:hover {
+  text-decoration-color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Símbolo B ↔ ∞: a haste se apaga e o ∞ gira e deita (e o caminho inverso ao voltar). */
+.logo {
+  overflow: visible;
+}
+
+.logo .mark-frame {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.45s var(--ease) 0.35s;
+}
+
+.logo .mark-loop {
+  transform-origin: var(--mark-origin);
+  transition: transform 0.8s var(--ease);
+}
+
+.logo.is-infinity .mark-frame,
+a:hover > .logo .mark-frame,
+a:focus-visible > .logo .mark-frame {
+  stroke-dashoffset: -1;
+  transition-delay: 0s;
+}
+
+.logo.is-infinity .mark-loop,
+a:hover > .logo .mark-loop,
+a:focus-visible > .logo .mark-loop {
+  transform: rotate(-90deg) scale(0.82);
+  transition-delay: 0.2s;
+}

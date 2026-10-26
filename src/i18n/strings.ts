@@ -1,0 +1,329 @@
+// Todos os textos do site, em português e inglês.
+
+import { withBase } from '../lib/url';
+
+export type Lang = 'pt' | 'en';
+
+export const paths = {
+  pt: { home: withBase('/'), privacy: withBase('/privacidade') },
+  en: { home: withBase('/en/'), privacy: withBase('/en/privacy') },
+} as const;
+
+const pt = {
+  htmlLang: 'pt-BR',
+  meta: {
+    title: 'Be For You | Design, marketing digital e engenharia de software',
+    description:
+      'Estúdio de design, marketing digital e engenharia de software. Identidades visuais, interfaces, conteúdo para redes sociais, sites e sistemas sob medida.',
+  },
+  skip: 'Ir para o conteúdo',
+  nav: {
+    services: 'Serviços',
+    work: 'Portfólio',
+    process: 'Processo',
+    contact: 'Contato',
+    whatsapp: 'WhatsApp',
+    menu: 'Menu',
+    close: 'Fechar',
+    langLabel: 'Idioma',
+    otherLang: 'English',
+    otherLangShort: 'EN',
+  },
+  hero: {
+    title: 'Be For You',
+    lead: 'Estúdio de design, marketing digital e engenharia de software. Transformamos ideias em marcas, produtos e presença digital, com o mesmo cuidado do primeiro esboço à entrega.',
+    primary: 'Ver portfólio',
+    secondary: 'Agendar uma conversa',
+    callMessage: 'Olá! Gostaria de agendar uma conversa com a Be For You.',
+  },
+  manifesto: {
+    a: 'Be for you.',
+    b: 'Before you.',
+    body: [
+      'O infinito do nosso símbolo nasceu da parceria entre quem fundou a Be For You. Hoje ele representa o compromisso que assumimos com cada cliente.',
+      'Estamos presentes antes, durante e depois de cada entrega, para que a sua ideia chegue ao mundo exatamente como você imaginou.',
+    ],
+    sign: 'Sempre por você.',
+  },
+  services: {
+    title: 'Três disciplinas, um mesmo cuidado',
+    intro: 'Unimos design, comunicação e tecnologia em uma única equipe. Isso significa menos intermediários e uma identidade consistente em todos os pontos de contato.',
+    colWe: 'O que fazemos',
+    colYou: 'O que você recebe',
+    items: [
+      {
+        title: 'Design com intenção',
+        name: 'Design',
+        desc: 'Marcas e interfaces que as pessoas entendem de primeira, usam com facilidade e reconhecem em qualquer lugar.',
+        deliverables: [
+          'Logotipo e identidade visual',
+          'Design de interfaces (UI) e experiência do usuário (UX)',
+          'Prototipagem navegável',
+          'Design de sites e aplicativos',
+          'Acessibilidade digital',
+        ],
+      },
+      {
+        title: 'Conteúdo que conecta',
+        name: 'Marketing digital',
+        desc: 'Vídeos, posts e carrosséis que fazem a sua marca ser lembrada, com a mesma identidade em cada publicação.',
+        deliverables: [
+          'Vídeos para Instagram, TikTok e YouTube Shorts',
+          'Carrosséis e posts',
+          'Planejamento de conteúdo',
+          'Direção de arte para redes sociais',
+        ],
+      },
+      {
+        title: 'Tecnologia que sustenta',
+        name: 'Engenharia de software',
+        desc: 'Sites e sistemas rápidos e seguros, que funcionam bem hoje e continuam fáceis de evoluir amanhã.',
+        deliverables: [
+          'Sites institucionais e landing pages',
+          'Aplicações web sob medida',
+          'Integrações e automações',
+          'Performance, SEO técnico e manutenção',
+        ],
+      },
+    ],
+  },
+  work: {
+    title: 'Portfólio',
+    intro: 'Uma seleção de projetos de identidade visual, interfaces, conteúdo e desenvolvimento.',
+    filterLabel: 'Filtrar projetos por tipo',
+    all: 'Todos',
+    categories: {
+      identidade: 'Identidade visual',
+      interfaces: 'UI/UX e sites',
+      social: 'Redes sociais',
+      dev: 'Desenvolvimento',
+    },
+    empty: 'Ainda não há projetos nesta categoria. Veja os outros tipos acima.',
+    open: 'Abrir projeto',
+    close: 'Fechar projeto',
+    site: 'Site',
+    visit: 'Visitar o site',
+    identity: 'Identidade visual',
+    social: 'Redes sociais',
+    carousels: (n: number) => (n === 1 ? '1 carrossel' : `${n} carrosséis`),
+    pickCarousel: 'Escolha um carrossel',
+    prev: 'Slide anterior',
+    next: 'Próximo slide',
+    slideOf: (i: number, n: number) => `${i} de ${n}`,
+  },
+  process: {
+    title: 'Como trabalhamos',
+    intro: 'Um processo claro, com etapas definidas e acompanhamento contínuo depois da entrega.',
+    steps: [
+      { name: 'Conversa inicial', desc: 'Entendemos o seu objetivo, o seu público e o que precisa acontecer para o projeto dar certo.' },
+      { name: 'Estratégia', desc: 'Definimos escopo, prazos e direção criativa e técnica, tudo registrado por escrito.' },
+      { name: 'Criação e desenvolvimento', desc: 'Desenhamos, produzimos e construímos, com revisões em cada etapa.' },
+      { name: 'Entrega e acompanhamento', desc: 'Publicamos, medimos os resultados e seguimos ao seu lado depois do lançamento.' },
+    ],
+    loop: 'E o ciclo recomeça a cada nova ideia.',
+  },
+  clients: {
+    title: 'Quem confia na Be For You',
+    testimonialsTitle: 'O que dizem os nossos clientes',
+  },
+  contact: {
+    title: 'Conte-nos o que você quer construir',
+    intro: 'Responda em poucas palavras. Sua mensagem segue pronta para o WhatsApp ou para o e-mail, como preferir.',
+    name: 'Seu nome',
+    service: 'Tenho interesse em',
+    serviceOptions: ['Design', 'Marketing digital', 'Engenharia de software', 'Mais de um serviço', 'Ainda não sei'],
+    message: 'Sobre o projeto',
+    messageHint: 'Opcional. Conte o que você imagina, prazos ou referências.',
+    sendWhatsapp: 'Enviar pelo WhatsApp',
+    sendEmail: 'Enviar por e-mail',
+    required: 'Informe o seu nome para continuarmos.',
+    greeting: 'Olá! Meu nome é',
+    interest: 'Tenho interesse em',
+    subject: 'Novo projeto pelo site',
+    direct: 'Ou fale diretamente',
+    schedule: 'Agendar uma conversa',
+  },
+  footer: {
+    rights: 'Todos os direitos reservados.',
+    privacy: 'Política de privacidade',
+    cookies: 'Preferências de cookies',
+    top: 'Voltar ao topo',
+  },
+  consent: {
+    text: 'Usamos cookies de análise para entender como o site é usado e melhorá-lo. Eles só são ativados com a sua permissão.',
+    accept: 'Aceitar cookies',
+    reject: 'Recusar',
+    more: 'Saiba mais',
+  },
+  privacy: {
+    title: 'Política de privacidade',
+    updated: 'Atualizada em outubro de 2026.',
+    back: 'Voltar ao início',
+  },
+  notFound: {
+    title: 'Página não encontrada',
+    body: 'O endereço pode ter mudado ou não existe mais.',
+    back: 'Voltar ao início',
+  },
+};
+
+const en: typeof pt = {
+  htmlLang: 'en',
+  meta: {
+    title: 'Be For You | Design, digital marketing and software engineering',
+    description:
+      'A design, digital marketing and software engineering studio. Brand identities, interfaces, social content, websites and custom software.',
+  },
+  skip: 'Skip to content',
+  nav: {
+    services: 'Services',
+    work: 'Work',
+    process: 'Process',
+    contact: 'Contact',
+    whatsapp: 'WhatsApp',
+    menu: 'Menu',
+    close: 'Close',
+    langLabel: 'Language',
+    otherLang: 'Português',
+    otherLangShort: 'PT',
+  },
+  hero: {
+    title: 'Be For You',
+    lead: 'A design, digital marketing and software engineering studio. We turn ideas into brands, products and digital presence, with the same care from first sketch to launch.',
+    primary: 'See our work',
+    secondary: 'Book a call',
+    callMessage: 'Hello! I would like to book a call with Be For You.',
+  },
+  manifesto: {
+    a: 'Be for you.',
+    b: 'Before you.',
+    body: [
+      'The infinity in our symbol was born from the partnership between the founders of Be For You. Today it stands for the commitment we make to every client.',
+      'We are there before, during and after every delivery, so your idea reaches the world exactly as you pictured it.',
+    ],
+    sign: 'Always for you.',
+  },
+  services: {
+    title: 'Three disciplines, one standard of care',
+    intro: 'Design, communication and technology in a single team. Fewer hand-offs, and a consistent identity at every touchpoint.',
+    colWe: 'What we do',
+    colYou: 'What you get',
+    items: [
+      {
+        title: 'Design with intent',
+        name: 'Design',
+        desc: 'Brands and interfaces people understand at first sight, use with ease and recognize anywhere.',
+        deliverables: [
+          'Logo and brand identity',
+          'User interface (UI) and experience (UX) design',
+          'Interactive prototypes',
+          'Website and app design',
+          'Digital accessibility',
+        ],
+      },
+      {
+        title: 'Content that connects',
+        name: 'Digital marketing',
+        desc: 'Videos, posts and carousels that make your brand memorable, with the same identity in every post.',
+        deliverables: [
+          'Videos for Instagram, TikTok and YouTube Shorts',
+          'Carousels and posts',
+          'Content planning',
+          'Art direction for social media',
+        ],
+      },
+      {
+        title: 'Technology that lasts',
+        name: 'Software engineering',
+        desc: 'Fast, secure websites and systems that work well today and stay easy to evolve tomorrow.',
+        deliverables: [
+          'Company websites and landing pages',
+          'Custom web applications',
+          'Integrations and automation',
+          'Performance, technical SEO and maintenance',
+        ],
+      },
+    ],
+  },
+  work: {
+    title: 'Work',
+    intro: 'A selection of brand identity, interface, content and development projects.',
+    filterLabel: 'Filter projects by type',
+    all: 'All',
+    categories: {
+      identidade: 'Brand identity',
+      interfaces: 'UI/UX and websites',
+      social: 'Social media',
+      dev: 'Development',
+    },
+    empty: 'No projects in this category yet. Try one of the other types above.',
+    open: 'Open project',
+    close: 'Close project',
+    site: 'Website',
+    visit: 'Visit the website',
+    identity: 'Brand identity',
+    social: 'Social media',
+    carousels: (n: number) => (n === 1 ? '1 carousel' : `${n} carousels`),
+    pickCarousel: 'Choose a carousel',
+    prev: 'Previous slide',
+    next: 'Next slide',
+    slideOf: (i: number, n: number) => `${i} of ${n}`,
+  },
+  process: {
+    title: 'How we work',
+    intro: 'A clear process with defined stages, and ongoing support after delivery.',
+    steps: [
+      { name: 'First conversation', desc: 'We learn your goal, your audience and what needs to happen for the project to succeed.' },
+      { name: 'Strategy', desc: 'We define scope, timeline and creative and technical direction, all in writing.' },
+      { name: 'Design and build', desc: 'We design, produce and build, with reviews at every stage.' },
+      { name: 'Launch and support', desc: 'We publish, measure results and stay by your side after launch.' },
+    ],
+    loop: 'And the cycle begins again with every new idea.',
+  },
+  clients: {
+    title: 'Brands that trust Be For You',
+    testimonialsTitle: 'What our clients say',
+  },
+  contact: {
+    title: 'Tell us what you want to build',
+    intro: 'A few words are enough. Your message goes out ready for WhatsApp or email, whichever you prefer.',
+    name: 'Your name',
+    service: 'I’m interested in',
+    serviceOptions: ['Design', 'Digital marketing', 'Software engineering', 'More than one service', 'Not sure yet'],
+    message: 'About the project',
+    messageHint: 'Optional. Tell us what you have in mind, timelines or references.',
+    sendWhatsapp: 'Send via WhatsApp',
+    sendEmail: 'Send via email',
+    required: 'Enter your name so we can continue.',
+    greeting: 'Hello! My name is',
+    interest: 'I’m interested in',
+    subject: 'New project from the website',
+    direct: 'Or reach us directly',
+    schedule: 'Book a call',
+  },
+  footer: {
+    rights: 'All rights reserved.',
+    privacy: 'Privacy policy',
+    cookies: 'Cookie preferences',
+    top: 'Back to top',
+  },
+  consent: {
+    text: 'We use analytics cookies to understand how the site is used and improve it. They are only turned on with your permission.',
+    accept: 'Accept cookies',
+    reject: 'Decline',
+    more: 'Learn more',
+  },
+  privacy: {
+    title: 'Privacy policy',
+    updated: 'Last updated October 2026.',
+    back: 'Back to home',
+  },
+  notFound: {
+    title: 'Page not found',
+    body: 'The address may have changed or no longer exists.',
+    back: 'Back to home',
+  },
+};
+
+export const strings = { pt, en };
+export const t = (lang: Lang) => strings[lang];

@@ -1,0 +1,8 @@
+---
+import Prose from '../components/Prose.astro';
+import { t, paths } from '../i18n/strings';
+
+const s = t('pt');
+---
+
+<Prose lang="pt" alternate={paths.en.home} title={s.notFound.title} lead={s.notFound.body} back={{ href: paths.pt.home, label: s.notFound.back }} />

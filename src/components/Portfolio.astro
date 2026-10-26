@@ -1,0 +1,441 @@
+---
+// Portfólio por cliente: cada card abre o case completo (site, identidade e carrosséis).
+import Cover from './Cover.astro';
+import Orbs from './Orbs.astro';
+import CaseDialog from './CaseDialog.astro';
+import { t, type Lang } from '../i18n/strings';
+import { projects, categories } from '../data/projects';
+import { image, getSet } from '../lib/media';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = t(lang).work;
+const present = categories.filter((c) => projects.some((p) => p.services.includes(c)));
+const count = (c: (typeof categories)[number]) => projects.filter((p) => p.services.includes(c)).length;
+---
+
+<section class="work tone" id="portfolio" data-tone="dark" aria-labelledby="work-title">
+  <Orbs set="work" />
+  <div class="wrap">
+    <header class="work-head">
+      <div class="section-head">
+        <h2 class="section-title" id="work-title">{s.title}</h2>
+        <p class="section-intro">{s.intro}</p>
+      </div>
+
+      <div class="filters" role="group" aria-label={s.filterLabel}>
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">
+          {s.all}
+          <span class="count">{projects.length}</span>
+        </button>
+        {
+          present.map((c) => (
+            <button type="button" class="chip" data-filter={c} aria-pressed="false">
+              {s.categories[c]}
+              <span class="count">{count(c)}</span>
+            </button>
+          ))
+        }
+      </div>
+    </header>
+
+    <ul class="grid">
+      {
+        projects.map((p, i) => {
+          const stack = p.stack ? getSet(p.stack)?.slides.slice(0, 2) : undefined;
+          const nCarousels = (p.carousels ?? []).filter((c) => getSet(c)).length;
+          return (
+            <li class={`item size-${p.size}`} data-cats={p.services.join(' ')} style={`view-transition-name: work-${i}`}>
+              <article class="card" data-tone="light">
+                <div class="card-head">
+                  <div class="card-text">
+                    <h3 class="w-title">
+                      <button type="button" class="open" data-open={`case-${p.id}`} aria-haspopup="dialog">
+                        {p.client}
+                      </button>
+                    </h3>
+                    <p class="w-sum">{p.summary[lang]}</p>
+                  </div>
+                  <span class="go" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                  </span>
+                </div>
+
+                <div class="media">
+                  {stack ? (
+                    <div class="stack">
+                      {stack.map((sl) => (
+                        <img class="stack-back" src={sl.thumb} alt="" loading="lazy" decoding="async" />
+                      ))}
+                      <img class="stack-front" src={image(p.cover)} alt="" loading="lazy" decoding="async" />
+                    </div>
+                  ) : p.cover ? (
+                    <img src={image(p.cover)} alt="" loading="lazy" decoding="async" />
+                  ) : (
+                    <Cover category={p.services[0]} seed={i + 1} ratio={4 / 3} />
+                  )}
+                </div>
+
+                <div class="w-meta">
+                  <ul class="tags">
+                    {p.site && <li>{s.site}</li>}
+                    {p.identity && <li>{s.identity}</li>}
+                    {nCarousels > 0 && <li>{s.carousels(nCarousels)}</li>}
+                  </ul>
+                  <span>{p.year}</span>
+                </div>
+              </article>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <p class="empty" hidden>{s.empty}</p>
+  </div>
+
+  {projects.map((p) => <CaseDialog project={p} lang={lang} />)}
+</section>
+
+<style>
+  .work {
+    padding-block: var(--section);
+  }
+
+  .work-head {
+    display: grid;
+    gap: 8px;
+    margin-bottom: clamp(40px, 6vw, 72px);
+  }
+
+  .work-head .section-head {
+    margin-bottom: 32px;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.97rem;
+    transition:
+      background-color 0.25s var(--ease),
+      color 0.25s var(--ease),
+      border-color 0.25s var(--ease);
+  }
+
+  .chip:hover {
+    border-color: var(--fg-soft);
+  }
+
+  .chip[aria-pressed='true'] {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
+  }
+
+  .count {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Grade "bento": cards de tamanhos variados que se encaixam sem buracos. */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: clamp(380px, 31vw, 460px);
+    grid-auto-flow: dense;
+    gap: clamp(14px, 1.6vw, 22px);
+  }
+
+  .item {
+    grid-column: span 4;
+  }
+
+  .item.size-wide {
+    grid-column: span 8;
+  }
+
+  .item.size-tall {
+    grid-row: span 2;
+  }
+
+  .item[hidden] {
+    display: none;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    padding: clamp(16px, 1.6vw, 22px);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 4px 4px 0;
+  }
+
+  .card-text {
+    display: grid;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .w-title {
+    font-size: var(--step-1);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  /* O botão do título cobre o card inteiro: qualquer clique abre o case. */
+  .open {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .open::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: var(--radius);
+  }
+
+  .open:focus-visible {
+    outline: none;
+  }
+
+  .open:focus-visible::after {
+    outline: 2px solid var(--agua);
+    outline-offset: 3px;
+  }
+
+  .w-sum {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--fg-soft);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 36rem;
+  }
+
+  .go {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    transition:
+      background-color 0.3s var(--ease),
+      color 0.3s var(--ease),
+      border-color 0.3s var(--ease);
+  }
+
+  .go svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .card:hover .go {
+    background: var(--violeta);
+    border-color: var(--violeta);
+    color: var(--porcelana);
+  }
+
+  .card:hover .go svg {
+    transform: rotate(90deg);
+  }
+
+  .media {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: calc(var(--radius) - 10px);
+    background: color-mix(in srgb, var(--nevoa) 30%, var(--porcelana));
+  }
+
+  .media > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: clamp(10px, 1.4vw, 18px);
+  }
+
+  /* Pilha de slides: a capa na frente e dois slides inclinados atrás. */
+  .stack {
+    position: absolute;
+    inset: 9% 0;
+    display: grid;
+    place-items: center;
+  }
+
+  .stack img {
+    grid-area: 1 / 1;
+    width: auto;
+    height: auto;
+    max-width: 66%;
+    max-height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 18px 40px -18px rgb(21 4 42 / 0.45);
+    transition: transform 0.6s var(--ease);
+  }
+
+  /* Os slides de trás são transformados (e por isso pintados por cima); a capa precisa subir. */
+  .stack-front {
+    position: relative;
+    z-index: 1;
+  }
+
+  .stack-back:nth-child(1) {
+    transform: rotate(7deg) translateX(16%);
+  }
+
+  .stack-back:nth-child(2) {
+    transform: rotate(-6deg) translateX(-16%);
+  }
+
+  .card:hover .stack-back:nth-child(1) {
+    transform: rotate(10deg) translateX(24%);
+  }
+
+  .card:hover .stack-back:nth-child(2) {
+    transform: rotate(-9deg) translateX(-24%);
+  }
+
+  .w-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 4px 2px;
+    color: var(--fg-soft);
+    font-size: 0.88rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tags li {
+    padding: 3px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .item {
+      grid-column: span 3;
+    }
+
+    .item.size-wide {
+      grid-column: span 6;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr);
+      grid-auto-rows: auto;
+    }
+
+    .item,
+    .item.size-wide {
+      grid-column: auto;
+    }
+
+    .item.size-tall {
+      grid-row: auto;
+    }
+
+    .media {
+      flex: none;
+      aspect-ratio: 4 / 3;
+    }
+
+    .size-tall .media {
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stack img {
+      transition: none;
+    }
+  }
+
+  .empty {
+    color: var(--fg-soft);
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('#portfolio');
+  if (root) {
+    const chips = [...root.querySelectorAll<HTMLButtonElement>('.chip')];
+    const items = [...root.querySelectorAll<HTMLElement>('.item')];
+    const empty = root.querySelector<HTMLElement>('.empty')!;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const apply = (filter: string) => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.filter === filter)));
+      let shown = 0;
+      items.forEach((it) => {
+        const on = filter === 'all' || it.dataset.cats!.split(' ').includes(filter);
+        it.hidden = !on;
+        if (on) shown++;
+      });
+      empty.hidden = shown > 0;
+    };
+
+    chips.forEach((chip) =>
+      chip.addEventListener('click', () => {
+        const filter = chip.dataset.filter!;
+        if (document.startViewTransition && !reduce) document.startViewTransition(() => apply(filter));
+        else apply(filter);
+      }),
+    );
+  }
+</script>

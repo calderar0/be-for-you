@@ -1,0 +1,138 @@
+---
+// Letreiro do topo: "BE FOR YOU" repetido, com as colunas de "O" girando como um contador.
+import { layout } from '../lib/glyphs';
+
+const ROWS = 4;
+const PITCH = 118;
+const BLEED = 64;
+const { placed, width } = layout('BE FOR YOU');
+const letters = placed.filter((p) => !p.glyph.circle);
+const oCols = placed.filter((p) => p.glyph.circle);
+const height = (ROWS - 1) * PITCH + 100;
+const extra = Array.from({ length: ROWS + 4 }, (_, i) => i - 2);
+const pad = 4;
+---
+
+<svg
+  class="lettering"
+  viewBox={`${-pad} ${-BLEED} ${width + pad * 2} ${height + BLEED * 2}`}
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  aria-hidden="true"
+  data-pitch={PITCH}
+>
+  <defs>
+    <linearGradient id="lt-fade" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0" />
+      <stop offset={BLEED / (height + BLEED * 2)} stop-color="#fff" stop-opacity="1" />
+      <stop offset={1 - BLEED / (height + BLEED * 2)} stop-color="#fff" stop-opacity="1" />
+      <stop offset="1" stop-color="#fff" stop-opacity="0" />
+    </linearGradient>
+    <mask id="lt-mask" maskUnits="userSpaceOnUse" x={-pad} y={-BLEED} width={width + pad * 2} height={height + BLEED * 2}>
+      <rect x={-pad} y={-BLEED} width={width + pad * 2} height={height + BLEED * 2} fill="url(#lt-fade)" />
+    </mask>
+  </defs>
+
+  {
+    Array.from({ length: ROWS }, (_, row) => (
+      <g transform={`translate(0 ${row * PITCH})`} style={`--row:${row}`}>
+        {letters.map((p) => (
+          <path
+            class="lt-stroke"
+            d={p.glyph.d}
+            transform={`translate(${p.x} 0)`}
+            pathLength="1"
+          />
+        ))}
+      </g>
+    ))
+  }
+
+  <g mask="url(#lt-mask)">
+    {
+      oCols.map((p, col) => (
+        <g class="lt-col" data-col={col}>
+          {extra.map((i) => (
+            <circle cx={p.x + 50} cy={i * PITCH + 50} r="50" />
+          ))}
+        </g>
+      ))
+    }
+  </g>
+</svg>
+
+<style>
+  .lettering {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    stroke-width: 2;
+  }
+
+  .lt-col {
+    will-change: transform;
+  }
+
+  :global(.js) .lt-stroke {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: lt-draw 1.4s var(--ease) forwards;
+    animation-delay: calc(var(--row) * 0.12s + 0.1s);
+  }
+
+  @keyframes lt-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.js) .lt-stroke {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+</style>
+
+<script>
+  const svg = document.querySelector<SVGSVGElement>('.lettering');
+  const cols = svg ? [...svg.querySelectorAll<SVGGElement>('.lt-col')] : [];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Traço sempre fino na tela (≈1,6 px), qualquer que seja o tamanho do letreiro.
+  if (svg) {
+    const hairline = () => {
+      const px = window.innerWidth < 640 ? 1.25 : 1.6;
+      svg.style.strokeWidth = String((px * svg.viewBox.baseVal.width) / svg.clientWidth);
+    };
+    new ResizeObserver(hairline).observe(svg);
+  }
+
+  if (svg && cols.length && !reduce) {
+    const pitch = Number(svg.dataset.pitch);
+    const start = performance.now() + 380;
+    const duration = 2000;
+    const from = [-3 * pitch, 3 * pitch];
+    const ease = (t: number) => 1 - Math.pow(1 - t, 4);
+    let visible = true;
+
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(svg);
+
+    const frame = (now: number) => {
+      if (visible) {
+        const t = Math.min(Math.max((now - start) / duration, 0), 1);
+        // O rolar acompanha o scroll: as colunas giram em sentidos opostos.
+        const scroll = (window.scrollY / window.innerHeight) * pitch * 1.4;
+        cols.forEach((col, i) => {
+          const intro = from[i] * (1 - ease(Math.max(0, t - i * 0.06) / (1 - i * 0.06)));
+          const raw = intro + (i === 0 ? scroll : -scroll);
+          const y = ((raw % pitch) + pitch) % pitch;
+          col.setAttribute('transform', `translate(0 ${y.toFixed(2)})`);
+        });
+      }
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
+</script>

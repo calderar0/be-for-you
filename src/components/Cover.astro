@@ -1,0 +1,94 @@
+---
+// Capa gerada nas cores da marca, usada enquanto o projeto não tem imagem própria.
+import type { Category } from '../data/projects';
+
+interface Props {
+  category: Category;
+  seed: number;
+  ratio: number;
+}
+
+const { category, seed, ratio } = Astro.props;
+const W = 400;
+const H = Math.round(W / ratio);
+const cx = W / 2;
+const cy = H / 2;
+const v = (seed * 37) % 7;
+const bars = Array.from({ length: 9 }, (_, i) => 60 + ((i * 53 + seed * 31) % 200));
+---
+
+<svg class="cover" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  {
+    category === 'identidade' && (
+      <g>
+        <rect width={W} height={H} fill="#88bfbf" />
+        <circle cx={cx - 38 + v * 4} cy={cy} r={Math.min(W, H) * 0.24} fill="none" stroke="#320a59" stroke-width="1.5" />
+        <circle cx={cx + 38 - v * 4} cy={cy} r={Math.min(W, H) * 0.24} fill="#320a59" fill-opacity="0.9" />
+        <path
+          d={`M${cx - 120} ${cy + Math.min(W, H) * 0.34}H${cx + 120}`}
+          stroke="#320a59"
+          stroke-width="1.5"
+        />
+      </g>
+    )
+  }
+  {
+    category === 'interfaces' && (
+      <g>
+        <rect width={W} height={H} fill="#bebad9" />
+        <g transform={`translate(${W * 0.12} ${H * 0.16})`}>
+          <rect width={W * 0.76} height={H * 0.84} rx="10" fill="#faf9fd" />
+          <circle cx="16" cy="14" r="3.5" fill="#bebad9" />
+          <circle cx="28" cy="14" r="3.5" fill="#bebad9" />
+          <circle cx="40" cy="14" r="3.5" fill="#bebad9" />
+          <rect x="16" y="40" width={W * 0.3} height="12" rx="6" fill="#320a59" />
+          <rect x="16" y="62" width={W * 0.22} height="8" rx="4" fill="#7b5da6" opacity="0.5" />
+          <rect x="16" y="84" width="72" height="22" rx="11" fill="#118c80" />
+          <rect x={W * 0.42} y="40" width={W * 0.28} height={H * 0.84 - 64} rx="8" fill="#88bfbf" />
+        </g>
+      </g>
+    )
+  }
+  {
+    category === 'social' && (
+      <g>
+        <rect width={W} height={H} fill="#7b5da6" />
+        <g transform={`translate(${cx - H * 0.2} ${H * 0.1})`}>
+          <rect width={H * 0.4} height={H * 0.8} rx="16" fill="#320a59" />
+          <rect x="10" y="10" width={H * 0.4 - 20} height={H * 0.8 - 20} rx="9" fill="#88bfbf" opacity="0.9" />
+          <path
+            d={`M${H * 0.2 - 10} ${H * 0.4 - 14}l26 14-26 14Z`}
+            fill="#faf9fd"
+          />
+          <rect x="22" y={H * 0.8 - 48} width={H * 0.2} height="6" rx="3" fill="#faf9fd" />
+          <rect x="22" y={H * 0.8 - 36} width={H * 0.12} height="6" rx="3" fill="#faf9fd" opacity="0.6" />
+        </g>
+      </g>
+    )
+  }
+  {
+    category === 'dev' && (
+      <g>
+        <rect width={W} height={H} fill="#2a0c4a" />
+        {bars.map((b, i) => (
+          <rect
+            x={40 + (i % 3 === 0 ? 0 : 24 * ((i % 3) + 0))}
+            y={H * 0.16 + i * ((H * 0.68) / 9)}
+            width={b * (W / 400) * 0.9}
+            height="8"
+            rx="4"
+            fill={i % 4 === 1 ? '#118c80' : i % 4 === 3 ? '#7b5da6' : '#88bfbf'}
+            opacity={i % 4 === 0 ? 1 : 0.75}
+          />
+        ))}
+      </g>
+    )
+  }
+</svg>
+
+<style>
+  .cover {
+    width: 100%;
+    height: 100%;
+  }
+</style>
