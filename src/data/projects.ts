@@ -18,7 +18,10 @@ export type SourceRef = { src: string; drop?: number[]; order?: number[] };
 
 export type Project = {
   id: string;
+  // Nome do cliente ou, em projeto próprio, o nome do produto.
   client: string;
+  // Projeto da própria Be For You, sem cliente.
+  own?: boolean;
   summary: { pt: string; en: string };
   services: Category[];
   year: string;
@@ -34,6 +37,8 @@ export type Project = {
     video?: string;
     poster?: string;
     pages?: { name: { pt: string; en: string }; screen: string; full: string }[];
+    // 'mobile' mostra o vídeo e as páginas numa moldura de celular.
+    device?: 'desktop' | 'mobile';
   };
   // Imagens soltas (caminho em public/) ou galerias convertidas do Canva.
   identity?: (string | SourceRef)[];
@@ -137,6 +142,62 @@ export const projects: Project[] = [
     cover: '/portfolio/sets/angel-02/1.webp',
     stack: { src: 'Angel 01' },
     carousels: [{ src: 'Angel 02' }, { src: 'Angel 01' }, { src: 'Angel 03' }, { src: 'Angel 06' }],
+  },
+  {
+    id: 'gastos',
+    client: 'Gastos',
+    own: true,
+    summary: {
+      pt: 'Aplicação web de finanças pessoais: orçamento por potes, importação de extratos, caronas, investimentos e histórico num só painel.',
+      en: 'A personal finance web app: budgeting by pots, statement import, shared rides, investments and history in one dashboard.',
+    },
+    services: ['interfaces', 'dev'],
+    year: '2026',
+    size: 'wide',
+    cover: '/portfolio/gastos/telas/01-dashboard.webp',
+    site: {
+      video: '/portfolio/gastos/navegacao.mp4',
+      poster: '/portfolio/gastos/poster.webp',
+      pages: [
+        { name: { pt: 'Painel', en: 'Dashboard' }, screen: '/portfolio/gastos/telas/01-dashboard.webp', full: '/portfolio/gastos/telas/01-dashboard.webp' },
+        { name: { pt: 'Mês atual', en: 'Current month' }, screen: '/portfolio/gastos/telas/02-mes-atual.webp', full: '/portfolio/gastos/telas/02-mes-atual.webp' },
+        { name: { pt: 'Mês por pote', en: 'Month by pot' }, screen: '/portfolio/gastos/telas/03-mes-por-pote.webp', full: '/portfolio/gastos/telas/03-mes-por-pote.webp' },
+        { name: { pt: 'Caronas', en: 'Rides' }, screen: '/portfolio/gastos/telas/04-caronas.webp', full: '/portfolio/gastos/telas/04-caronas.webp' },
+        { name: { pt: 'Extrato do cartão', en: 'Card statement' }, screen: '/portfolio/gastos/telas/05-extrato-cartao.webp', full: '/portfolio/gastos/telas/05-extrato-cartao.webp' },
+        { name: { pt: 'Extrato do banco', en: 'Bank statement' }, screen: '/portfolio/gastos/telas/06-extrato-banco-por-pote.webp', full: '/portfolio/gastos/telas/06-extrato-banco-por-pote.webp' },
+        { name: { pt: 'Investimentos', en: 'Investments' }, screen: '/portfolio/gastos/telas/07-investimentos.webp', full: '/portfolio/gastos/telas/07-investimentos.webp' },
+        { name: { pt: 'Histórico', en: 'History' }, screen: '/portfolio/gastos/telas/08-historico.webp', full: '/portfolio/gastos/telas/08-historico.webp' },
+        { name: { pt: 'Ganhos', en: 'Income' }, screen: '/portfolio/gastos/telas/09-ganhos.webp', full: '/portfolio/gastos/telas/09-ganhos.webp' },
+        { name: { pt: 'Contas', en: 'Bills' }, screen: '/portfolio/gastos/telas/10-contas.webp', full: '/portfolio/gastos/telas/10-contas.webp' },
+      ],
+    },
+  },
+  {
+    id: 'divisao-de-viagem',
+    client: 'Divisão de viagem',
+    own: true,
+    summary: {
+      pt: 'App para dividir os gastos de viagens de carro: combustível calculado por quilômetro e consumo, pedágio, estacionamento e acerto de contas.',
+      en: 'An app to split road trip costs: fuel calculated by distance and mileage, tolls, parking and settling up.',
+    },
+    services: ['interfaces', 'dev'],
+    year: '2026',
+    size: 'normal',
+    cover: '/portfolio/divisao-de-viagem/telas/02-visao-geral.webp',
+    site: {
+      device: 'mobile',
+      video: '/portfolio/divisao-de-viagem/navegacao.mp4',
+      poster: '/portfolio/divisao-de-viagem/poster.webp',
+      pages: [
+        { name: { pt: 'Entrar', en: 'Sign in' }, screen: '/portfolio/divisao-de-viagem/telas/01-login.webp', full: '/portfolio/divisao-de-viagem/paginas/01-login.webp' },
+        { name: { pt: 'Visão geral', en: 'Overview' }, screen: '/portfolio/divisao-de-viagem/telas/02-visao-geral.webp', full: '/portfolio/divisao-de-viagem/paginas/02-visao-geral.webp' },
+        { name: { pt: 'Mês', en: 'Month' }, screen: '/portfolio/divisao-de-viagem/telas/03-mes.webp', full: '/portfolio/divisao-de-viagem/paginas/03-mes.webp' },
+        { name: { pt: 'Viagem', en: 'Trip' }, screen: '/portfolio/divisao-de-viagem/telas/04-viagem-detalhe.webp', full: '/portfolio/divisao-de-viagem/paginas/04-viagem-detalhe.webp' },
+        { name: { pt: 'Lançar combustível', en: 'Add fuel' }, screen: '/portfolio/divisao-de-viagem/telas/05-lancar-combustivel.webp', full: '/portfolio/divisao-de-viagem/paginas/05-lancar-combustivel.webp' },
+        { name: { pt: 'Editar despesa', en: 'Edit expense' }, screen: '/portfolio/divisao-de-viagem/telas/06-editar-despesa.webp', full: '/portfolio/divisao-de-viagem/paginas/06-editar-despesa.webp' },
+        { name: { pt: 'Análise', en: 'Analysis' }, screen: '/portfolio/divisao-de-viagem/telas/07-analise.webp', full: '/portfolio/divisao-de-viagem/paginas/07-analise.webp' },
+      ],
+    },
   },
 ];
 

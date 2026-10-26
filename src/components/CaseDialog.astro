@@ -19,6 +19,7 @@ const identity = (p.identity ?? []).flatMap((item) =>
 );
 const carousels = (p.carousels ?? []).map((c) => getSet(c)).filter((c) => c !== undefined);
 const pages = p.site?.pages ?? [];
+const mobile = p.site?.device === 'mobile';
 ---
 
 <dialog class="case" id={id} data-tone="dark" aria-labelledby={`${id}-title`}>
@@ -29,6 +30,7 @@ const pages = p.site?.pages ?? [];
         <p class="case-sum">{p.summary[lang]}</p>
         <p class="case-meta">
           <span>{p.services.map((c) => s.categories[c]).join(', ')}</span>
+          {p.own && <span>{s.own}</span>}
           <span>{p.year}</span>
         </p>
       </div>
@@ -84,11 +86,12 @@ const pages = p.site?.pages ?? [];
 
     {
       p.site && (
-        <section class="block" aria-label={s.site}>
-          <h3 class="block-title">{s.site}</h3>
+        <section class="block" aria-label={mobile ? s.app : s.site}>
+          <h3 class="block-title">{mobile ? s.app : s.site}</h3>
 
+          <div class:list={['site-media', mobile && 'is-mobile']}>
           {p.site.video ? (
-            <div class="browser">
+            <div class:list={['browser', mobile && 'is-phone']}>
               <div class="browser-bar" aria-hidden="true">
                 <span />
                 <span />
@@ -121,7 +124,7 @@ const pages = p.site?.pages ?? [];
 
           {pages.length > 0 && (
             <div class="pages">
-              <div class="browser">
+              <div class:list={['browser', mobile && 'is-phone']}>
                 <div class="browser-bar">
                   <span aria-hidden="true" />
                   <span aria-hidden="true" />
@@ -144,6 +147,7 @@ const pages = p.site?.pages ?? [];
               </div>
             </div>
           )}
+          </div>
 
           {p.site.url && (
             <a class="btn" href={p.site.url} target="_blank" rel="noopener">
@@ -433,6 +437,45 @@ const pages = p.site?.pages ?? [];
     display: grid;
     gap: 16px;
     width: 100%;
+  }
+
+  .site-media {
+    display: grid;
+    gap: 24px;
+    width: 100%;
+  }
+
+  /* Projetos para celular: vídeo e páginas lado a lado, em molduras de celular. */
+  .site-media.is-mobile {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 380px));
+    align-items: start;
+    gap: 32px;
+  }
+
+  .is-mobile .pages {
+    width: auto;
+  }
+
+  .browser.is-phone {
+    border: 10px solid color-mix(in srgb, var(--nevoa) 28%, #241040);
+    border-radius: 42px;
+    box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.6);
+  }
+
+  .is-phone .browser-bar {
+    display: none;
+  }
+
+  .is-phone .site-video {
+    aspect-ratio: 440 / 880;
+  }
+
+  .is-phone .page-scroll {
+    height: min(72vh, 700px);
+  }
+
+  .is-mobile .page-pick {
+    width: 92px;
   }
 
   /* A página inteira rola dentro da moldura, como no navegador. */

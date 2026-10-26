@@ -83,6 +83,7 @@ const count = (c: (typeof categories)[number]) => projects.filter((p) => p.servi
 
                 <div class="w-meta">
                   <ul class="tags">
+                    {p.own && <li>{s.own}</li>}
                     {p.site && <li>{s.site}</li>}
                     {p.identity && <li>{s.identity}</li>}
                     {nCarousels > 0 && <li>{s.carousels(nCarousels)}</li>}
